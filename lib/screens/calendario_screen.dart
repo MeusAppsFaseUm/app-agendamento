@@ -17,7 +17,7 @@ class _CalendarioScreenState extends State<CalendarioScreen> {
   DateTime? _selectedDay;
   List<Agendamento> _agendamentosDoDia = [];
   List<Cliente> _clientes = [];
-  Map<DateTime, List<Agendamento>> _agendamentos = {};
+  final Map<DateTime, List<Agendamento>> _agendamentos = {};
 
   @override
   void initState() {
@@ -344,7 +344,7 @@ class _CalendarioScreenState extends State<CalendarioScreen> {
                         ),
                       ),
                       Text(
-                        '${_selectedDay != null ? "${_selectedDay!.day}/${_selectedDay!.month}/${_selectedDay!.year}" : ""}',
+                        _selectedDay != null ? "${_selectedDay!.day}/${_selectedDay!.month}/${_selectedDay!.year}" : "",
                         style: const TextStyle(
                           fontSize: 14,
                           color: Colors.white70,
@@ -767,7 +767,7 @@ class _NovoAgendamentoPageState extends State<NovoAgendamentoPage> {
                   ],
                 ),
                 child: DropdownButtonFormField<Cliente>(
-                  value: _clienteSelecionado,
+                  initialValue: _clienteSelecionado,
                   validator: (value) {
                     if (value == null) {
                       return 'Por favor, selecione um cliente';
